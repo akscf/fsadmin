@@ -1,0 +1,28 @@
+#!/bin/bash
+
+### BEGIN INIT INFO
+# Provides: fsadmin
+# Required-Start:
+# Required-Stop:
+# Default-Start: 2 3 4 5
+# Default-Stop:
+# Short-Description: fsadmin
+### END INIT INFO
+
+PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+#LANG=ru_RU.UTF-8; export LANG
+#LC_MESSAGES=POSIX; export LC_MESSAGE
+
+HOME='/opt/fsadmin'
+WSP_BIN="${HOME}/wstkd.sh"
+
+case $1 in
+    start)
+        ${WSP_BIN} start &
+    ;;
+    stop)
+	${WSP_BIN} stop
+    ;;
+    *)
+    echo "$0 [ start | stop ]";
+esac

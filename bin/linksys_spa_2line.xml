@@ -1,0 +1,134 @@
+<flat-profile>
+
+<!-- access -->
+<Enable_Web_Admin_Access ua="na"> Yes
+ </Enable_Web_Admin_Access>
+<Admin_Passwd ua="na"> %admin_password%
+ </Admin_Passwd>
+<User_Password ua="na">
+ </User_Password>
+
+<!-- system -->
+<Connection_Type ua="na"> DHCP
+ </Connection_Type>
+<DNS_Server_Order ua="na"> DHCP,Manual
+ </DNS_Server_Order>
+<Enable_WAN_Web_Server ua="na"> Yes
+ </Enable_WAN_Web_Server>
+<WAN_Web_Server_Port ua="na"> Yes
+ </WAN_Web_Server_Port>
+<Enable_DHCP_Server ua="na"> No
+ </Enable_DHCP_Server>
+
+<!-- provisioning -->
+<Upgrade_Enable ua="na"> No
+ </Upgrade_Enable>
+<Upgrade_Error_Retry_Delay ua="na"> 120
+ </Upgrade_Error_Retry_Delay>
+
+<!-- rtp -->
+<RTP_Packet_Size ua="na"> 0.020
+ </RTP_Packet_Size>
+
+<!-- codecs -->
+<NSE_Codec_Name ua="na"> NSE
+ </NSE_Codec_Name>
+<AVT_Codec_Name ua="na"> telephone-event
+ </AVT_Codec_Name>
+<G711u_Codec_Name ua="na"> PCMU
+ </G711u_Codec_Name>
+<G711a_Codec_Name ua="na"> PCMA
+ </G711a_Codec_Name>
+<G726r16_Codec_Name ua="na"> G726-16
+ </G726r16_Codec_Name>
+<G726r24_Codec_Name ua="na"> G726-24
+ </G726r24_Codec_Name>
+<G726r32_Codec_Name ua="na"> G726-32
+ </G726r32_Codec_Name>
+<G726r40_Codec_Name ua="na"> G726-40
+ </G726r40_Codec_Name>
+<G729a_Codec_Name ua="na"> G729a
+ </G729a_Codec_Name>
+<G729b_Codec_Name ua="na"> G729ab
+ </G729b_Codec_Name>
+<G723_Codec_Name ua="na"> G723
+ </G723_Codec_Name>
+
+<!-- BEGIN_LINE #1 -->
+<Line_Enable_1_ ua="na"> %line1_enabled%
+ </Line_Enable_1_>
+<Register_1_ ua="na"> Yes
+ </Register_1_>
+<Register_Expires_1_ ua="na"> 900
+ </Register_Expires_1_>
+<Proxy_1_ ua="na"> %line1_realm%
+ </Proxy_1_>
+<Outbound_Proxy_1_ ua="na"> %line1_proxy%
+ </Outbound_Proxy_1_>
+<User_ID_1_ us="na"> %line1_number%
+ </User_ID_1_>
+<Display_Name_1_ ua="na"> %line1_number%
+ </Display_Name_1_>
+<Password_1_ ua="na"> %line1_password%
+ </Password_1_>
+<Password_1_ ua="na"> %line1_password%
+ </Password_1_>
+<!-- line1 codecs -->
+<Preferred_Codec_1_ ua="na"> G729a
+ </Preferred_Codec_1_>
+<Use_Pref_Codec_Only_1_ ua="na"> No
+ </Use_Pref_Codec_Only_1_>
+<G729a_Enable_1_ ua="na"> Yes
+ </G729a_Enable_1_>
+<G723_Enable_1_ ua="na"> No
+ </G723_Enable_1_>
+<G726-16_Enable_1_ ua="na"> No
+ </G726-16_Enable_1_>
+<G726-24_Enable_1_ ua="na"> No
+ </G726-24_Enable_1_>
+<G726-32_Enable_1_ ua="na"> No
+ </G726-32_Enable_1_>
+<G726-40_Enable_1_ ua="na"> No
+ </G726-40_Enable_1_>
+<!-- END_LINE #1 -->
+
+<!-- BEGIN_LINE #2 -->
+<Line_Enable_2_ ua="na"> %line2_enabled%
+ </Line_Enable_2_>
+<Register_2_ ua="na"> Yes
+ </Register_2_>
+<Register_Expires_2_ ua="na"> 900
+ </Register_Expires_2_>
+<Proxy_2_ ua="na"> %line2_realm%
+ </Proxy_2_>
+<Outbound_Proxy_2_ ua="na"> %line2_proxy%
+ </Outbound_Proxy_2_>
+<User_ID_2_ us="na"> %line2_number%
+ </User_ID_2_>
+<Display_Name_2_ ua="na"> %line2_number%
+ </Display_Name_2_>
+<Password_2_ ua="na"> %line2_password%
+ </Password_2_>
+<Password_2_ ua="na"> %line2_password%
+ </Password_2_>
+<!-- line2 codecs -->
+<Preferred_Codec_2_ ua="na"> G729a
+ </Preferred_Codec_2_>
+<Use_Pref_Codec_Only_2_ ua="na"> No
+ </Use_Pref_Codec_Only_2_>
+<G729a_Enable_2_ ua="na"> Yes
+ </G729a_Enable_2_>
+<G723_Enable_2_ ua="na"> No
+ </G723_Enable_2_>
+<G726-16_Enable_2_ ua="na"> No
+ </G726-16_Enable_2_>
+<G726-24_Enable_2_ ua="na"> No
+ </G726-24_Enable_2_>
+<G726-32_Enable_2_ ua="na"> No
+ </G726-32_Enable_2_>
+<G726-40_Enable_2_ ua="na"> No
+ </G726-40_Enable_2_>
+<!-- END_LINE #1 -->
+
+
+</flat-profile>
