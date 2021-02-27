@@ -84,7 +84,7 @@ sub switch_uuid_record {
     return SwitchAdmin::Models::FileItem->new( name => $rec_name, path => $rec_path, size => 0, directory => Wstk::Boolean::FALSE );
 }
 
-sub switch_list_codecs {
+sub switch_show_codecs {
     my ($self) = @_;
     #
     $self->{esl_client}->connect();
@@ -113,7 +113,7 @@ sub switch_list_codecs {
 }
 
 # using sofia api
-sub switch_list_registrations {
+sub switch_show_registrations {
     my($self, $filter) = @_;
     #
     my $profiles = $self->{fsadmin}->dao_lookup('SipProfileDAO')->list();
@@ -160,7 +160,7 @@ sub switch_list_registrations {
     return $result;
 }
 
-sub switch_list_calls {
+sub switch_show_calls {
     my($self, $filter) = @_;   
     #
     my $ftext = filter_get_text($filter);

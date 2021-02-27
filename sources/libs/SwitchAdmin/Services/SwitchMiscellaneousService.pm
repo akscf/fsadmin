@@ -33,28 +33,28 @@ sub get_class_name {
 # ---------------------------------------------------------------------------------------------------------------------------------
 # public methods
 # ---------------------------------------------------------------------------------------------------------------------------------
-sub rpc_listCodecs {
+sub rpc_showCodecs {
     my ($self, $sec_ctx) = @_;
     #
     check_permissions($self, $sec_ctx, [ROLE_ADMIN]);
     #
-    return $self->{misc_dao}->switch_list_codecs();
+    return $self->{misc_dao}->switch_show_codecs();
 }
 
-sub rpc_listRegistrations {
+sub rpc_showRegistrations {
     my ($self, $sec_ctx, $filter) = @_;
     #
     check_permissions($self, $sec_ctx, [ROLE_ADMIN]);
     #
-    return $self->{misc_dao}->switch_list_registrations($filter);
+    return $self->{misc_dao}->switch_show_registrations($filter);
 }
 
-sub rpc_listCalls {
+sub rpc_showCalls {
     my ($self, $sec_ctx, $filter) = @_;
     #
     check_permissions($self, $sec_ctx, [ROLE_ADMIN]);
     #
-    return $self->{misc_dao}->switch_list_calls($filter);
+    return $self->{misc_dao}->switch_show_calls($filter);
 }
 
 sub rpc_killSession {
