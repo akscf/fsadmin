@@ -120,7 +120,7 @@ sub get_config {
 		return $config;
 	}
 	
-	sub reprovisioning {
+	sub reprovision {
 		my ($self, $device, $drv_props) = @_;
 		unless ($device) {
 			die Wstk::WstkException->new("device", RPC_ERR_CODE_INVALID_ARGUMENT);
@@ -138,13 +138,10 @@ sub get_config {
 		if($drv_props->{admin_password}) { 
 			$req->authorization_basic('admin', $drv_props->{admin_password}); 
 		}
-		$self->{logger}->debug("reprovisioning: ".$url);
 		my $resp = $ua->request($req);
-		if($resp->is_success) { 
-			return 1; 
-		}
-		die Wstk::WstkException->new("Reprovisioning fail! Device response: ".$resp->status_line, RPC_ERR_CODE_INTERNAL_ERROR);
-		return 0;
+		if($resp->is_success) { return 1; }
+		#
+		die Wstk::WstkException->new("Reprovision fail! Device response: ".$resp->status_line, RPC_ERR_CODE_INTERNAL_ERROR);
 	}
 	
 	sub reboot {
@@ -166,9 +163,8 @@ sub get_config {
 			$req->authorization_basic('admin', $drv_props->{admin_password}); 
 		}
 		my $resp = $ua->request($req);
-		if($resp->is_success) { 
-			return 1; 
-		}
+		if($resp->is_success) { return 1; }
+		#
 		die Wstk::WstkException->new("Reboot fail! Device response: ".$resp->status_line, RPC_ERR_CODE_INTERNAL_ERROR);
 	}	
 }

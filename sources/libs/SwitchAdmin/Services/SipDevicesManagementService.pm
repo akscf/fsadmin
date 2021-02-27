@@ -72,7 +72,7 @@ sub rpc_list {
     return $self->{device_dao}->list($filter);
 }
 
-sub rpc_reprovisioning {
+sub rpc_reprovision {
     my ($self, $sec_ctx, $mac) = @_;
     #
     check_permissions($self, $sec_ctx, [ROLE_ADMIN]);
@@ -100,7 +100,7 @@ sub rpc_reprovisioning {
     $drv_props->{acs_url} = $self->{fsadmin}->get_config('acs', 'url');
     #
     $@ = "";
-    eval { $driver->reprovisioning($device, $drv_props); 1; } || do {
+    eval { $driver->reprovision($device, $drv_props); 1; } || do {
         my $exc = $@;
         if($exc) {
             if(ref $exc eq 'Wstk::WstkException') { die $exc; } 

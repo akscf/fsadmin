@@ -13,12 +13,12 @@
  - simple file manager for: scrips, sounds, recordings and user files
  - powerful editor for: scrips (lua/javascript) and xml documents (sip profiles, modules and dialplans)
  - event socket console and journal viewer
- - visual dialplan editor
+ - dialplan visual editor
  - web interface based on Qooxdoo
  - access to all the management API through JSON-RPC
- 
+
 ## Downloads 
- [fsadmin-1.1-25022021.tar.gz](https://github.com/akscf/fsadmin/blob/main/bin/fsadmin-1.1-25022021.tar.gz)
+ [fsadmin-1.1-27022021.tar.gz](https://github.com/akscf/fsadmin/blob/main/bin/fsadmin-1.1-27022021.tar.gz)
  
 ## Documentations
 <a href="https://akscf.org/?page=projects/fsadmin/main" target="_blank">Manuals</a><br>
