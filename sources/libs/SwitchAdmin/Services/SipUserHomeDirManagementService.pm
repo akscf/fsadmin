@@ -90,6 +90,20 @@ sub rpc_move {
     return $self->{userdir_dao}->move($user, $from, $to);
 }
     
+sub rpc_copy {
+    my ($self, $sec_ctx, $userId, $from, $to) = @_;
+    #
+    check_permissions($self, $sec_ctx, [ROLE_ADMIN]);
+    #
+    my $user = undef;
+    if(is_digit($userId)) { $user = $self->{user_dao}->get($userId); }
+    else { $user = $self->{user_dao}->lookup($userId); }
+    unless($user) { 
+        die Wstk::WstkException->new('User '.$userId, RPC_ERR_CODE_NOT_FOUND); 
+    }
+    return $self->{userdir_dao}->copy($user, $from, $to);
+}
+
 sub rpc_delete {
     my ($self, $sec_ctx, $userId, $path) = @_;
     #

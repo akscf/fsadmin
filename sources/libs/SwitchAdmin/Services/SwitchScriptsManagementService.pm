@@ -64,6 +64,14 @@ sub rpc_move {
     return $self->{scrip_dao}->move($from, $to);
 }
     
+sub rpc_copy {
+    my ($self, $sec_ctx, $from, $to) = @_;
+    #
+    check_permissions($self, $sec_ctx, [ROLE_ADMIN]);
+    #
+    return $self->{scrip_dao}->copy($from, $to);
+}
+
 sub rpc_delete {
     my ($self, $sec_ctx, $path) = @_;
     #

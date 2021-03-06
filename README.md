@@ -18,7 +18,7 @@
  - access to all the management API through JSON-RPC
 
 ## Downloads 
- [fsadmin-1.1-27022021.tar.gz](https://github.com/akscf/fsadmin/blob/main/bin/fsadmin-1.1-27022021.tar.gz)
+ [fsadmin-1.1-06032021.tar.gz](https://github.com/akscf/fsadmin/blob/main/bin/fsadmin-1.1-06032021.tar.gz)
  
 ## Documentations
 <a href="https://akscf.org/?page=projects/fsadmin/main" target="_blank">Manuals</a><br>

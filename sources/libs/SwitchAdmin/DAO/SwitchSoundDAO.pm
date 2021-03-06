@@ -8,6 +8,8 @@ use strict;
 
 use File::Basename;
 use File::Slurp;
+use File::Copy;
+use File::Copy::Recursive qw(dircopy);
 use Log::Log4perl;
 use Wstk::Boolean;
 use Wstk::WstkException;
@@ -121,7 +123,7 @@ sub rename {
     my $old_path = $file_item->path();
     my $old_name = $self->{base_path} .'/'. $file_item->path();
     my $new_name_local = undef;
-
+    #
     if ($file_item->path() eq $file_item->name()) {
         $file_item->path($new_name);
         $file_item->name($new_name);
@@ -137,14 +139,14 @@ sub rename {
         if( -d $new_name_local ) {
             die Wstk::WstkException->new($file_item->path(), RPC_ERR_CODE_ALREADY_EXISTS);
         }
-        rename($old_name, $new_name_local);
+        File::Copy::move($old_name, $new_name_local);
         return $file_item;
     }
     if( -e $old_name ) {
         if( -e $new_name_local ) {
             die Wstk::WstkException->new($file_item->path(), RPC_ERR_CODE_ALREADY_EXISTS);
         }
-        rename($old_name, $new_name_local);
+        File::Copy::move($old_name, $new_name_local);
         return $file_item;
     }
     die Wstk::WstkException->new($old_path, RPC_ERR_CODE_NOT_FOUND);
@@ -156,26 +158,66 @@ sub move {
     validate_entity($self, $to);
     #
     my $to_path_name = ($to ? $to->path() : undef);
-    unless (is_valid_path($to_path_name)) {
+    if($to_path_name && !is_valid_path($to_path_name)) {
         die Wstk::WstkException->new("Malformed path 'to'", RPC_ERR_CODE_INVALID_ARGUMENT);
-    }    
+    }
     unless (is_valid_path($from->path())) {
         die Wstk::WstkException->new("Malformed path 'from'", RPC_ERR_CODE_INVALID_ARGUMENT);
     }
+    #
     my $from_fqname = $self->{base_path} .'/'. $from->path(); 
-    my $to_fqname = $self->{base_path} .'/'. $to_path_name; 
+    my $to_fqname = ($to_path_name ? $self->{base_path} .'/'. $to_path_name : $self->{base_path});
     #
     if( -d $from_fqname ) {
-        move($from_fqname, $to_fqname);
+        $to_fqname .= ($from->name() ? '/' . $from->name() : '');
+        File::Copy::move($from_fqname, $to_fqname);
         return SwitchAdmin::Models::FileItem->new(
             name => $from->name(), path => $to_path_name, size => $from->size(), date => $from->date(), directory => $from->directory()
         );
     }
     if( -e $from_fqname ) {
-        move($from_fqname, $to_fqname);
+        unless(-d $to_fqname) {
+            die Wstk::WstkException->new($to_path_name, RPC_ERR_CODE_NOT_FOUND);
+        }
+        File::Copy::move($from_fqname, $to_fqname);
         return SwitchAdmin::Models::FileItem->new(
             name => $from->name(), path => $to_path_name, size => $from->size(), date => $from->date(), directory => $from->directory()
         );
+    }
+    die Wstk::WstkException->new($from->path(), RPC_ERR_CODE_NOT_FOUND);
+}
+
+sub copy {
+    my ($self, $from, $to) = @_;
+    validate_entity($self, $from);
+    validate_entity($self, $to);
+    #
+    my $to_path_name = ($to ? $to->path() : undef);
+    if($to_path_name && !is_valid_path($to_path_name)) {
+        die Wstk::WstkException->new("Malformed path 'to'", RPC_ERR_CODE_INVALID_ARGUMENT);
+    }
+    unless (is_valid_path($from->path())) {
+        die Wstk::WstkException->new("Malformed path 'from'", RPC_ERR_CODE_INVALID_ARGUMENT);
+    }
+    #
+    my $from_fqname = $self->{base_path} .'/'. $from->path();
+    my $to_fqname = ($to_path_name ? $self->{base_path} .'/'. $to_path_name : $self->{base_path});
+    #
+    if( -d $from_fqname ) {
+        $to_fqname .= ($from->name() ? '/' . $from->name() : '');
+        dircopy($from_fqname, $to_fqname);
+        return SwitchAdmin::Models::FileItem->new(
+            name => $from->name(), path => $to_path_name, size => $from->size(), date => $from->date(), directory => $from->directory()
+        );
+    }
+    if( -e $from_fqname ) {
+        unless(-d $to_fqname) {
+            die Wstk::WstkException->new($to_path_name, RPC_ERR_CODE_NOT_FOUND);
+        }
+        File::Copy::copy($from_fqname, $to_fqname);
+        return SwitchAdmin::Models::FileItem->new(
+            name => $from->name(), path => $to_path_name, size => $from->size(), date => $from->date(), directory => $from->directory()
+        );        
     }
     die Wstk::WstkException->new($from->path(), RPC_ERR_CODE_NOT_FOUND);
 }
