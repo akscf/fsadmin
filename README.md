@@ -1,7 +1,9 @@
 <p>
  This is an open source web based application to manage VoIP systems based on Freswitch.<br>
  The lightweight backend (written in Perl) has already contained all the necessary things which it needs to work (expect SQLine, see installation guide)<br>
- This solution is mainly suitable to manage small PBX systems with few domains and about 1k users.
+ This solution is mainly suitable to manage small PBX systems with few domains and about 1k users.<br>
+ ---<br>
+ This application distributed as free and opensource, except the web interface, this part is also free but distributed without source code (but if someone really needs this code you can get it for a small fee)
 </p>
 
 ## Features list
