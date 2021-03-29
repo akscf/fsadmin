@@ -98,15 +98,20 @@ sub update {
             die Wstk::WstkException->new($entity->name(), RPC_ERR_CODE_ALREADY_EXISTS);
         }
     }
+    if($_entity->profileId() ne $entity->profileId()) {
+        if(is_duplicate($self, $entity)) {
+            die Wstk::WstkException->new($entity->name(), RPC_ERR_CODE_ALREADY_EXISTS);
+        }        
+    }
     #
     $entity->enabled(is_true($entity->enabled()) ? Wstk::Boolean::TRUE : Wstk::Boolean::FALSE);
     $entity->register(is_true($entity->register()) ? Wstk::Boolean::TRUE : Wstk::Boolean::FALSE);
     $entity->variables($entity->variables() ? $entity->variables() : '[]');
     #
-    entity_copy_by_fields($_entity, $entity, ['name', 'enabled', 'register', 'username', 'password', 'realm', 'proxy', 'description', 'variables']);
+    entity_copy_by_fields($_entity, $entity, ['profileId', 'name', 'enabled', 'register', 'username', 'password', 'realm', 'proxy', 'description', 'variables']);
     my $qres = $self->{'dbm'}->do_query(undef, 
-        'UPDATE ' . TABLE_NAME . ' SET name=?, enabled=?, register=?, username=?, password=?, realm=?, proxy=?, description=?, variables=? WHERE id=?',
-        [ $_entity->name(), $_entity->enabled(), $_entity->register(), $_entity->username(), $_entity->password(), $_entity->realm(), 
+        'UPDATE ' . TABLE_NAME . ' SET profileId=?, name=?, enabled=?, register=?, username=?, password=?, realm=?, proxy=?, description=?, variables=? WHERE id=?',
+        [ $_entity->profileId(), $_entity->name(), $_entity->enabled(), $_entity->register(), $_entity->username(), $_entity->password(), $_entity->realm(), 
           $_entity->proxy(), $_entity->description(), $_entity->variables(), $_entity->id()
         ]
     );
