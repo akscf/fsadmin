@@ -252,7 +252,7 @@ sub do_generate_directory {
 			return 1;
 		}
 		my $user = $self->{sip_user_dao}->lookup($sip_id);
-		unless($user || is_false($user->enabled())) { 
+		if(!defined($user) || !is_true($user->enabled())) {
 			$self->{logger}->warn("User not found or disabled: ".$sip_id);
 			xmlcurl_send_not_found(); 
 			return 1; 
