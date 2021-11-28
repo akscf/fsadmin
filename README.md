@@ -1,6 +1,6 @@
 <p>
  A lightweight web based application to manage VoIP systems based on Freswitch.<br> 	
- This solution is mainly suitable to manage small PBX systems with few domains and about 1k users and 
+ This solution is mainly suitable to manage small PBX systems with few domains and about 1k users, 
  possible to work on quite old systems and doesn't require any external packages (exclude SQLite, see installation guide).<br>
  The backend is writtenin Perl, frondend - javascript/qooxdoo.<br>
 </p>
