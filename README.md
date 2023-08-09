@@ -18,7 +18,7 @@
  - json-rpc api
   
 ### Downloads 
- - [fsadmin-1.1-29032021.tar.gz](https://github.com/akscf/fsadmin/blob/main/bin/fsadmin-1.1-29032021.tar.gz)
+ - [fsadmin-1.1-29032021.tar.gz](https://github.com/akscf/fsadmin/releases/tag/fsadmin-1.1-29032021)
  
 ### Related links
  - [Installation guide](https://akscf.org/?page=projects/fsadmin/installation_guide)
