@@ -4,8 +4,9 @@
 #  + added unicode parser: \uXXYY (2016)
 #  + added aliases (2020)
 # 
-# Copyright (C) AlexandrinKS
-# https://akscf.me/
+#
+# (C)2018 aks
+# https://github.com/akscf/
 # ******************************************************************************************
 package Wstk::JSON;
 use Log::Log4perl;
